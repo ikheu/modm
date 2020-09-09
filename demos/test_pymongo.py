@@ -12,7 +12,7 @@ dbop = PymongoCollection(db)
 class User(Model):
     _id = field.IntField()
     name = field.StrField(unique=True)
-    age = field.IntField(require=False, default=None)
+    age = field.IntField(require=True, default=None)
     country = field.StrField(require=False, default="China")
 
 

@@ -1,4 +1,5 @@
 from .field import BaseField
+from .exceptions import FieldLacked
 
 
 class MetaModel(type):
@@ -28,7 +29,7 @@ class Model(metaclass=MetaModel):
                 data[k] = kwargs[k]
             else:
                 if field.require:
-                    raise ValueError("'%s' field is required" % k)
+                    raise FieldLacked("'%s' field is required" % k)
                 else:
                     data[k] = field.default
         for k, v in data.items():

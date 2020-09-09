@@ -9,14 +9,16 @@ Quick example:
 from pymongo import MongoClient
 from modm import field, PymongoCollection, Model
 
+
 db = MongoClient().test
 dbop = PymongoCollection(db)
+
 
 @dbop.bind('user')
 class User(Model):
     _id = field.IntField()
     name = field.StrField(unique=True)
-    age = field.IntField(require=False, default=None)
+    age = field.IntField(require=True, default=None)
     country = field.StrField(require=False, default="China")
 
 if __name__ == '__main__':

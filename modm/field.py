@@ -1,4 +1,5 @@
 import abc
+from .exceptions import FieldInvalid
 
 
 class Descriptor:
@@ -36,7 +37,7 @@ class TypeField(BaseField):
         if isinstance(value, self.allow_type):
             return value
         else:
-            raise ValueError(" ")
+            raise FieldInvalid("%s is invalid for %s" % (value, self.allow_type.__name__))
 
 
 class StrField(TypeField):

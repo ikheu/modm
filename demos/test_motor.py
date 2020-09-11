@@ -11,7 +11,6 @@ dbop = MotorCollection(db)
 
 @dbop.bind('user')
 class User(Model):
-    _id = field.IntField()
     name = field.StrField(unique=True)
     age = field.IntField(require=True, default=None)
     country = field.StrField(require=False, default="China")
